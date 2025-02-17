@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+        integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    <link rel="stylesheet" href="./assets/css/login.css">
+</head>
+
+<body>
+    <!-- TOPMENU -->
+
+    <div class="login" id="container-login" style="display: none;">
+        <div class="login-content">
+            <span class="close-login" id="CloseFormLogin">&times;</span>
+            <div class="form-container sign-in-container">
+                <form action="#" id="dangnhap-form">
+                    <h1>Đăng nhập</h1>
+                    <div class="social-container">
+                        <a href=""><i class="fab fa-facebook-f"></i></a>
+                        <a href=""><i class="fab fa-google-plus-g"></i></a>
+                        <a href=""><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+
+                    <span>Hoặc sử dụng tài khoản đã có</span>
+                    <input type="text" placeholder="Số điện thoại hoặc Tên tài khoản" />
+                    <input type="password" placeholder="Mật khẩu" />
+                    <button class="block-item">Đăng nhập</button>
+                    <a>Chưa có tài khoản?</a>
+                    <div class="register">
+                        <a id="GoToSignUp">Đăng kí</a>
+                    </div>
+                </form>
+            </div>
+
+            <div class="form-container sign-up-container">
+                <form action="#">
+                    <h1>Đăng kí</h1>
+                    <span>Điền các thông tin sau:</span>
+                    <input type="text" placeholder="Số điện thoại" />
+                    <input type="text" placeholder="Tên tài khoản" />
+                    <input type="password" placeholder="Mật khẩu" />
+                    <input type="password" placeholder="Nhập lại mật khẩu" />
+                    <button class="block-item">Đăng kí</button>
+                    <div class="register">
+                        <a id="SignUpBackToSignIn">Quay lại</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="changePassForm hidden">
+        <span class="close-login" id="cancelChangePass">&times;</span>
+        <h3>Đổi mật khẩu</h3>
+        <form id="changePassForm">
+            <input id="repass" type="password" placeholder="Mật khẩu hiện tại" required />
+            <input id="repass" type="password" placeholder="Mật khẩu mới" required />
+            <input id="repass" type="password" placeholder="Nhập lại mật khẩu mới" required />
+            <button type="submit">Xác nhận</button>
+
+        </form>
+    </div>
+    <div id="find_wrap">
+        <div id="find">
+            <input type="text" id="findspace" class="searchInput" placeholder="Tìm kiếm sản phẩm...">
+            <button id="find-icon"><i class="fa-solid fa-magnifying-glass"></i></button>
+            <div class="finditem">
+                <h4>Thương hiệu</h4>
+                <input type="checkbox" name="thuonghieu" id="Asia"><label for="Asia">Asia</label> <br>
+                <input type="checkbox" name="thuonghieu" id="Senko"><label for="Senko">Senko</label> <br>
+                <input type="checkbox" name="thuonghieu" id="Panasonic"><label for="Panasonic">Panasonic</label><br>
+                <input type="checkbox" name="thuonghieu" id="Kangaroo"><label for="Kangaroo">Kangaroo</label><br>
+            </div>
+            <div class="finditem">
+                <h4>Loại Sản Phẩm</h4>
+                <input type="checkbox" name="loai" id="quatdung"><label for="quatdung">Quạt đứng</label> <br>
+                <input type="checkbox" name="loai" id="quatlung"><label for="quatlung">Quạt lửng</label> <br>
+                <input type="checkbox" name="loai" id="quattran"><label for="quattran">Quạt trần</label> <br>
+                <input type="checkbox" name="loai" id="quattreotuong"><label for="quattreotuong">Quạt treo
+                    tường</label><br>
+            </div>
+            <div class="finditem">
+                <h4>Theo Giá Sản Phẩm</h4>
+                <input type="text" id="minprice" class="searchInput" placeholder="Giá tối thiểu"
+                    oninput="dinhdangso(this)">
+                <input type="text" id="maxprice" class="searchInput" placeholder="Nhập giá tối đa"
+                    oninput="dinhdangso(this)">
+                <div id="reset">
+                    <button id="reset-button" onclick="resetFilter();">Đặt lại</button>
+                </div>
+            </div>
+        </div>
+        <!-- Inform product not found -->
+    </div>
+    <div id="toast">
+        <div style="text-align: center; font-size: 20px; margin-top: 10px; font-weight: 700;">Thông báo</div>
+        <div id="toast-msg" style="margin-top: 20px; text-align: center;"></div>
+    </div>
+    <div id="bar_wrap">
+        <div id="bar">
+            <div id="bar_text">
+                MENU
+            </div>
+            <div id="bar_list">
+                <ul>
+                    <li>Trang Chủ</li>
+                    <li>Liên Hệ</li>
+                    <li>Cửa Hàng</li>
+                    <li onclick="displayIntro()">Giới Thiệu</li>
+                    <li onclick="window.location.href='OrderHistory.html'">Lịch Sử Đặt Hàng</li>
+                </ul>
+            </div>
+            <div id="bar_bottom">
+                Liên Hệ: 0987654321
+            </div>
+        </div>
+    </div>
+    <!-- <div id="order_history">
+    <h1>Lịch sử đặt hàng</h1>
+    <table id="order-history-table">
+        <thead>
+            <tr>
+                <th>Mã đơn hàng</th>
+                <th>Ngày đặt</th>
+                <th>Số lượng</th>
+                <th>Tổng tiền</th>
+                <th>Địa chỉ nhận hàng</th>
+                <th>Trạng thái</th>
+            </tr>
+            <tbody id="orders-table-body">
+               
+            </tbody>
+        </thead>
+</div>  -->
+
+    <div id="topmenu">
+        <div id="topmenu-left">
+            <div id="topmenu_text" onclick="window.location.href='index.html'">
+                <img src="" alt="">
+            </div>
+            <div id="topmenu_list">
+                <div id="topmenu_list_item">
+                    <div onclick="window.location.href='index.html'">Trang Chủ</div>
+                    <div>Liên Hệ</div>
+                    <div>Cửa Hàng</div>
+                    <div onclick="displayIntro()">Giới Thiệu</div>
+                    <div onclick="window.location.href='OrderHistory.html'">Lịch Sử Đặt Hàng</div>
+                </div>
+            </div>
+        </div>
+        <div id="topmenu-right" style="display: flex; align-items: center;">
+            <div id="topmenu_icon">
+                <div id="topmenu_icon--bar"><i class="fa-solid fa-bars-staggered" onclick="hien('bar_wrap');"></i></div>
+                <div id="topmenu_icon--gear" onclick="window.location.href='admin.html'"><i
+                        class="fa-solid fa-gear"></i>
+                </div>
+                <div id="user--info" style="width: max-content;">
+                    <div id="user--name"></div>
+                    <div class=" user--selection hidden">
+                        <div id="box--name">
+                            <div class="user-information">Thông tin cá nhân</div>
+                            <div class="changePass">Đổi mật khẩu</div>
+                            <div class="logout">Đăng xuất</div>
+                        </div>
+                    </div>
+                </div>
+                <div id="topmenu_icon--user">
+                    <div id="icon--user" style="position: relative;">
+                        <i class="fa-regular fa-user"></i>
+                        <div class="user--selection hidden">
+                            <div>
+                                <div class="user-information">Thông tin cá nhân</div>
+                                <div class="changePass">Đổi mật khẩu</div>
+                                <div class="logout">Đăng xuất</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="topmenu_icon--find"><i class="fa-solid fa-magnifying-glass" onclick="hien('find_wrap');"></i>
+                </div>
+                <div id="topmenu_icon--bag" style="position: relative;">
+                    <i class="fa-solid fa-bag-shopping" onclick="window.location.href='cart.html'"></i>
+                    <p id="item-quantity"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="display-personal-info">
+        <div id="wrap-personal-info">
+            <div class="payment-title">
+                Thông tin cá nhân
+                <button id="closePersonalInfo" onclick="closePersonalInfoTable();">x</button>
+            </div>
+            <form id="personal-form">
+                <div class="payment-input">
+                    <label for="namePersonal">Họ và tên</label>
+                    <input type=" text" name="hotentxt" id="namePersonal" placeholder="Nguyễn Văn A"
+                        oninput="checkName(this)">
+                    <span class="error-input">Không được để trống</span>
+                </div>
+                <div style="display: flex; width: 100%;" id="personal-form-2">
+                    <div class="payment-input" style="margin-right: 10px; flex: 2;" id="personal-form-2-email">
+                        <label for="emailPersonal">Email</label>
+                        <input type=" text" name="email" id="emailPersonal" placeholder="nguyenvana@gmail.com"
+                            oninput="checkEmail(this)">
+                        <span class="error-input">Email không hợp lệ</span>
+                    </div>
+                    <div class="payment-input" style="flex: 1;">
+                        <label for="phonePersonal">Số điện thoại</label>
+                        <input type="text" name="phone" id="phonePersonal" placeholder="0987654321"
+                            oninput="checkSDT(this)" maxlength="10">
+                        <span class="error-input">SĐT không hợp lệ</span>
+                    </div>
+                </div>
+
+                <div class="payment-input">
+                    <label for="addressPersonal">Địa chỉ</label>
+                    <input type=" text" name="address" id="addressPersonal"
+                        placeholder="273 An Dương Vương P3 Quận 5 TPHCM" oninput="checkDiaChi(this)">
+                    <span class="error-input">Địa chỉ không hợp lế</span>
+                </div>
+                <div id="diachi-selection">
+                    <div class="dropdown">
+                        <div class="select" id="city-dropdown">
+                            <div>
+                                <div>Tỉnh / thành</div>
+                                <div class="selected" id="city-selected" style="color: #6c6c6c;">Chọn tỉnh / thành</div>
+                            </div>
+                            <div class="btn">
+                                <i class="fa-solid fa-chevron-down caret"></i>
+                            </div>
+                        </div>
+                        <ul class="menu" id="city-menu">
+                            <li data-city="TPHCM">TP.HCM</li>
+                            <li data-city="HN">Hà Nội</li>
+                            <!-- <li data-city="">Đà Nẵng</li> -->
+                            <li>Hihi</li>
+                        </ul>
+                    </div>
+                    <div class="dropdown">
+                        <div class="select" id="district-dropdown">
+                            <div>
+                                <div>Quận / huyện</div>
+                                <div class="selected" id="district-selected" style="color: #6c6c6c;">Chọn quận / huyện
+                                </div>
+                            </div>
+                            <div class="btn">
+                                <i class="fa-solid fa-chevron-down caret"></i>
+                            </div>
+                        </div>
+                        <ul class="menu" id="district-menu">
+                        </ul>
+                    </div>
+                    <div class="dropdown">
+                        <div class="select" id="ward-dropdown">
+                            <div>
+                                <div>Phường / xã</div>
+                                <div class="selected" id="ward-selected" style="color: #6c6c6c;">Chọn phường / xã</div>
+                            </div>
+                            <div class="btn">
+                                <i class="fa-solid fa-chevron-down caret"></i>
+                            </div>
+                        </div>
+                        <ul class="menu" id="ward-menu">
+                        </ul>
+                    </div>
+                </div>
+                <button type="submit" id="confirmPersonalInfo">Xác nhận</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="banner">
+        <img src="hinhanh/banner/img1.jpg" />
+        <img src="hinhanh/banner/image2.jpg" />
+        <img src="hinhanh/banner/image3.jpg" />
+    </div>
+    <div id="under-content">
+        <div id="leftmenu">
+            <div id="leftmenu-heading">                
+                Danh mục sản phẩm
+            </div>
+            <div id="category-list"></div>
+        </div>
+        <div id="content">
+            <div id="container-items"></div>
+            <div id="pagenum"></div>
+        </div>
+    </div>
+
+    <!-- product detail table -->
+    <div id="display-detail-table">
+        <div id="info-product">
+            <button class="btn-exit">X</button>
+            <div id="left-info"></div>
+            <div id="right-info"></div>
+        </div>
+    </div>
+
+    <!-- BRAND DETAIL TABLE -->
+    <div id="wrapIntro">
+        <div id="Intro">
+            <button class="btn-exit" onclick="Exit(1,wrapIntro)">x</button>
+            <div id="header-intro">Giới thiệu</div>
+            <div id="content-intro">
+                <div id="leftIntro">
+                    <div style="text-align: center;font-weight: bold;">Họ và tên</div>
+                    <div>Bùi Nguyễn Trọng Nghĩa</div>
+                    <div>Lưu Phùng Khải Nguyên</div>
+                    <div>Hồ Hoàng Long</div>
+                    <div>Bùi Nguyễn Trọng Nghĩa</div>
+                    <div>Bùi Nguyễn Trọng Nghĩa</div>
+                    <div>Bùi Nguyễn Trọng Nghĩa</div>
+                </div>
+                <div id="rightInfo">
+                    <div style="text-align: center;font-weight: bold;">MSSV</div>
+                    <div>3123560052</div>
+                    <div>3123560054</div>
+                    <div>3123560046</div>
+                    <div>3123560052</div>
+                    <div>3123560052</div>
+                    <div>3123560052</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="information">
+        <h2>Nhận thông tin khuyến mãi mới nhất</h2>
+        <p>Để lại email của bạn để nhận những thông tin khuyến mãi mới nhất từ chúng tôi</p>
+        <div id="input-information">
+            <input type="email" name="email-info" id="email-info" placeholder="Email của bạn">
+            <button onclick="checkEmailkhuyenmai()" id="emailkhuyenmai">
+                <i class="fa-solid fa-arrow-right" style="color: white;"></i>
+            </button>
+        </div>
+    </div>
+    <div id="footer">
+        <div id="footer-container">
+            <div class="footer-item">
+                <img src="Logo-DH-Sai-Gon-SGU-flat.webp" alt="">
+            </div>
+            <div class="footer-item">
+                <h4>Thông tin hữu ích</h4>
+                <a href="">Kiểm tra size quạt</a>
+                <br>
+                <a href="">Hướng dẫn bảo hành</a>
+                <br>
+                <a href="">Quy định đổi quạt</a>
+            </div>
+            <div class="footer-item">
+                <h4>Giới thiệu</h4>
+                <a href="">Quan niệm về quạt</a>
+                <br>
+                <a href="">Danh sách cửa hàng</a>
+                <br>
+                <a href="">Dành cho đại lý</a>
+            </div>
+            <div class="footer-item">
+                <h4>Thông tin liên hệ</h4>
+                <p>Địa chỉ: 273 An Dương Vương, P3, Quận 5, TP.HCM</p>
+                <p>Số điện thoại: 0912345JQK</p>
+            </div>
+        </div>
+    </div>
+    <script src="./js/login.js"></script>
+    <script src="./js/cart.js"></script>
+    <!-- <script src="./js/createAdminAccount.js"></script> -->
+    <script>
+        document.addEventListener('mousedown', function (event) {
+            const find = document.getElementById("find");
+            const find_wrap = document.getElementById("find_wrap");
+            const nameUser = document.getElementById('user--name');
+            const hihi = document.getElementsByClassName('user--selection')[0];
+            if (!find.contains(event.target)) {
+                find_wrap.style.display = 'none';
+            }
+
+
+            var bar = document.getElementById("bar");
+            var bar_wrap = document.getElementById("bar_wrap");
+            if (!bar.contains(event.target)) {
+                bar_wrap.style.display = 'none';
+            }
+
+            if (!nameUser.contains(event.target) && !hihi.contains(event.target)) {
+                document.getElementsByClassName('user--selection')[0].classList.add('hidden');
+            }
+
+        });
+
+
+        const images = document.querySelectorAll('.banner img');
+        let currentIndex = 0;
+
+        function showImage(index) {
+            if (index >= 0 && index < images.length) {
+                images.forEach(img => img.style.display = 'none');// Ẩn tất cả hình ảnh    
+                images[index].style.display = 'block'; // Hiển thị hình ảnh theo chỉ số hiện tại
+            }
+        }
+        function startAnimation() {
+            showImage(currentIndex);
+
+            // Cứ mỗi 4 giây sẽ chuyển sang hình ảnh tiếp theo
+            setInterval(() => {
+                currentIndex = (currentIndex + 1) % images.length; // Chuyển chỉ số, quay lại đầu nếu hết ảnh
+                showImage(currentIndex);
+            }, 4000); // 4 giây
+        }
+        //leftmenu
+        function taoleftmenu(){
+            let brand=[
+                {brandid: 'Asia', brandname:'Quạt Asia'},
+                {brandid: 'Senko', brandname:'Quạt Senko'},
+                {brandid: 'Kangaroo', brandname:'Quạt Kangaroo'},
+                {brandid: 'Panasonic', brandname:'Quạt Panasonic'},
+            ];
+            let s = "";
+            for(i = 0; i < brand.length; i++){
+                let a = `<li class="category-item" id="${brand[i].brandid}"` + ` onclick="hienthisptheoloai(this)">` + 
+                    `<a href="#">` + brand[i].brandname + `</a></li>`;
+                    s += a;
+            }            
+            s = '<ul>' + s + '</ul>';            
+            document.getElementById("category-list").innerHTML = s;
+            hightlightCategoryCurrent();
+        }
+        function delHighLightCategoryCurrent(){
+            const categoryList = document.querySelectorAll("#category-list a");
+            categoryList.forEach(category=> category.classList.remove("active-link"));
+        }
+        function hightlightCategoryCurrent(){
+            const categoryList = document.querySelectorAll("#category-list a");
+            // console.log(categoryList);
+            categoryList.forEach(category=>{
+                category.addEventListener('click', function(){
+                    categoryList.forEach(ele => ele.classList.remove("active-link"));
+                    category.classList.add("active-link");
+                });
+
+            });
+        }
+        function hienthisptheoloai(object) {
+            let s = "";
+            let arrProducts = [];
+            for (i = 0; i < productList.length; i++) {
+                if (productList[i].brandid === object.id) {
+                    arrProducts.push(productList[i]);
+                }
+            }
+            phantrang(arrProducts, 8);
+        }
+        //product-detail-table
+
+        function changeColorBtn1(button) {
+            button.style.backgroundColor = "#0d5145";
+            button.style.color = 'white';
+        }
+
+        function changeColorBtn2(button) {
+            button.style.backgroundColor = "white";
+            button.style.color = 'black';
+        }
+
+        function setupQuantity() {
+            const plus = document.querySelector(".plus");
+            const minus = document.querySelector(".minus");
+            const num = document.querySelector(".num");
+            if (num && plus && minus) {
+                num.addEventListener("input", function () {
+                    this.value = this.value.replace(/[^0-9]/g, '');
+                });
+                num.addEventListener("blur", function () {
+                    if (this.value.trim() === "") {
+                        this.value = 1;
+                    }
+                });
+                plus.addEventListener("click", () => {
+                    num.value = parseInt(num.value, 10) + 1;
+                });
+                minus.addEventListener("click", () => {
+                    if (parseInt(num.value, 10) > 1) {
+                        num.value = parseInt(num.value, 10) - 1;
+                    }
+                });
+                plus.addEventListener("mousedown", function () {
+                    changeColorBtn1(this);
+                });
+                plus.addEventListener("mouseup", function () {
+                    changeColorBtn2(this);
+                });
+                minus.addEventListener("mousedown", function () {
+                    changeColorBtn1(this);
+                });
+                minus.addEventListener("mouseup", function () {
+                    changeColorBtn2(this);
+                });
+            }
+        }
+        const productList = JSON.parse(localStorage.getItem("productList"));
+        console.log(productList);
+
+        // hiển thị thông tin chi tiết của sản phẩm.
+        function showDetailedInformation(productid, imgSrc, productName, productPower, productSize, brandId, madeIn, year, productPrice) {
+            let leftInfo = document.getElementById("left-info");
+            let rightInfo = document.getElementById("right-info");
+            leftInfo.innerHTML = `<img src="${imgSrc}" alt="${productName}">`;
+            let s = `
+                <p style="display: none;" id="product-id">${productid}</p>
+                <h2>${productName}</h2>
+                <p><b>Công suất: </b> ${productPower}</p>
+                <p><b>Kích thước: </b>${productSize}</p>       
+                <p><b>Xuất xứ:</b> ${madeIn}</p>
+                <p><b>Năm ra mắt:</b> ${year}</p>              
+                <p><b>Giá: </b>${productPrice.toLocaleString('vi-VN')} VNĐ</p>          
+                <p><b>Bảo hành: </b> 12 tháng</p>
+                <p><b>Hãng: </b>${brandId}</p> <!-- Loại bỏ nút xem thông tin hãng -->
+                <p><b>Số lượng</b></p>
+                <div class="count-box">
+                    <button class="minus">-</button>
+                    <input type="text" class="num">
+                    <button class="plus">+</button>
+                </div>
+                <button class="add-to-cart">Thêm vào giỏ</button>
+                `;
+            rightInfo.innerHTML = s;
+
+            setupQuantity();
+            addToCart(); // Đảm bảo gọi hàm addToCart sau khi thiết lập thông tin chi tiết
+        }
+
+
+
+
+
+        // lấy dữ liệu cho chi tiết sản phẩm
+        function detailedProductInformation(name, Array) {
+            let id, imgSrc, productName, productPower, productSize, brandId, madeIn, year, productPrice;
+            for (let i = 0; i < Array.length; i++) {
+                if (name.indexOf(Array[i].name) !== -1) {
+                    id = Array[i].productid;
+                    imgSrc = Array[i].img;
+                    productName = Array[i].name;
+                    productPower = Array[i].power;
+                    productSize = Array[i].size;
+                    madeIn = Array[i].madein;
+                    year = Array[i].year;
+                    brandId = Array[i].brandid;
+                    productPrice = Array[i].price;
+                    break;
+                }
+            }
+            showDetailedInformation(id, imgSrc, productName, productPower, productSize, brandId, madeIn, year, productPrice);
+        }
+
+
+
+        const displayTableDetail = document.getElementById("display-detail-table");
+        function displayProductDetailTable() {
+            const detailButtons = document.querySelectorAll('.detail');
+            detailButtons.forEach(button => {
+                button.addEventListener("click", function () {
+                    const productName = button.parentElement.querySelector(".wrap-product-content p").textContent;
+                    detailedProductInformation(productName, productList);
+                    document.querySelector(".num").value = 1;
+                    displayTableDetail.style.display = 'block';
+                    displayTableDetail.style.backgroundColor = 'rgba(0, 0, 0, 0.4)';
+
+                    Exit(0, displayTableDetail);
+                });
+            });
+        }
+
+
+
+
+        function Exit(x, element) {
+            const btnExit = document.getElementsByClassName("btn-exit")[x];
+            const addCart = document.getElementsByClassName('add-to-cart')[x];
+            // console.log(btnExit);
+            btnExit.addEventListener("click", function () {
+                console.log(element);
+
+                element.style.display = 'none';
+            });
+
+            if (addCart) addCart.addEventListener("click", function () {
+
+                document.getElementById('info-product').classList.add('hide');
+                element.classList.add('hide');
+                setTimeout(() => {
+                    element.style.display = 'none';
+                    element.classList.remove('hide');
+                    document.getElementById('info-product').classList.remove('hide');
+                }, 1500);
+            });
+
+            // Hide product detail table when clicking outside the table
+            element.addEventListener("click", function (event) {
+                //Ensures that only clicks on the displayTableDetail background(not its children)will trigger the hiding behavior.
+                if (event.target == this) {
+                    this.style.display = 'none';
+                }
+            });
+        }
+
+
+        // console.log(productArray.length);
+        function setUpData() {
+            localStorage.setItem('productList', JSON.stringify(productArray));
+            localStorage.setItem('brandInfo', JSON.stringify(brandArray));
+        }
+        // Highlight the page button current
+        function pageNumCurrent() {
+            const buttons = document.querySelectorAll(".pagenum-button");
+            // Set the first button as active by default
+            if (buttons.length > 0) {
+                buttons[0].classList.add("active");
+            }
+            //Sử dụng classList.add để thêm thuộc tính vào class pagenum-button
+            //Sử dụng setAttribute sẽ phức tạp hơn do thêm class cũ và cả class mới  muốn thêm vào
+            buttons.forEach(button => {
+                button.addEventListener("click", function () {
+                    // Remove 'active' class from all buttons
+                    buttons.forEach(btn => btn.classList.remove("active"));
+
+                    // Add 'active' class to the clicked button
+                    button.classList.add("active");
+                });
+            });
+        }
+
+        //Pagination
+        let itemsPerPage = 12;
+        let currentPage = 1;
+
+        function pageContent(pagenum, Array, numOfProducts) {
+            const containerItems = document.getElementById("container-items");
+            const startIndex = (pagenum - 1) * numOfProducts;
+            const endIndex = startIndex + numOfProducts;
+
+            let s = "";
+            for (let i = startIndex; i < endIndex && i < Array.length; i++) {
+                // Kiểm tra nếu sản phẩm có status = 1 thì mới hiển thị
+                if (Array[i].status === 1) {
+                    s += `
+                        <div class="item">
+                            <img src="${Array[i].img}" alt="${Array[i].name}">
+                            <div class="wrap-product-content">
+                                <p>${Array[i].name}</p>
+                                <p>${(Array[i].price).toLocaleString('vi-VN')} VNĐ</p>
+                            </div>
+                            <button class="detail">Chi tiết</button>
+                        </div>`;
+                }
+            }
+            containerItems.innerHTML = s;
+            displayProductDetailTable();
+        }
+
+
+        function pageUp() {
+            window.scrollTo({
+                top: 0,
+                // value of behavior: smooth instant auto
+                behavior: "smooth" // Adds a smooth scrolling effect
+            });
+        }
+        function phantrang(Array, numOfProducts) {
+            const pageNumContainer = document.getElementById("pagenum");
+            pageNumContainer.innerHTML = ""; // Xóa tất cả các nút hiện tại
+
+            let totalPages = Math.ceil(Array.length / numOfProducts);
+            pageContent(1, Array, numOfProducts);
+
+            for (let i = 1; i <= totalPages; i++) {
+                const button = document.createElement("button");
+                button.setAttribute("class", "pagenum-button");
+                button.textContent = i;
+                button.addEventListener("click", function () {
+                    pageContent(i, Array, numOfProducts);
+                    pageUp();
+                });
+                pageNumContainer.appendChild(button);
+            }
+
+            pageNumCurrent(); // Highlight the first page button
+        }
+
+
+        document.getElementById('find-icon').addEventListener('mousedown', function (event) {
+            var element = document.getElementById('find-icon');
+
+            if (element.contains(event.target)) {
+                const find = document.getElementById('findspace').value.trim();
+                let minprice = document.getElementById('minprice').value;
+                let maxprice = document.getElementById('maxprice').value;
+
+                if (minprice == '') minprice = 0;
+                if (maxprice == '') maxprice = Infinity;
+
+
+                minprice = Number(minprice.toString().replace(/\./g, ''));
+                maxprice = Number(maxprice.toString().replace(/\./g, ''));
+
+                const selectedCategories = Array.from(document.querySelectorAll('input[name="loai"]:checked')).map(checkbox => checkbox.id);
+                const selectedBrands = Array.from(document.querySelectorAll('input[name="thuonghieu"]:checked')).map(checkbox => checkbox.id);
+
+                if (minprice <= maxprice) {
+                    findItem(find, minprice, maxprice, selectedCategories, selectedBrands);
+                    delHighLightCategoryCurrent();
+                }
+                else {
+                    displayToast('Vui lòng nhập giá trị hợp lệ.');
+                    console.log('Vui lòng nhập đúng từ khóa và giá trị hợp lệ.');
+                }
+            }
+        });
+
+        const listProduct = 'productList';
+
+        const findData = localStorage.getItem(listProduct);
+        function findItem(find, minprice, maxprice, selectedCategories, selectedBrands) {
+            if (findData) {
+
+                const products = JSON.parse(findData);
+                const result = products.filter(product =>
+                    product.name.toLowerCase().includes(find.toLowerCase()) &&
+                    product.price <= maxprice &&
+                    product.price >= minprice &&
+                    (selectedCategories.length === 0 || selectedCategories.includes(product.category)) &&
+                    (selectedBrands.length === 0 || selectedBrands.includes(product.brandid))
+                );
+                // console.log(result);
+                if (result.length === productList.length) {
+                    phantrang(productList, itemsPerPage);
+                }
+                else if (result.length > 0) {
+                    phantrang(result, 8);
+                }
+                else {
+                    displayToast('Không tìm thấy sản phẩm!');
+                }
+            }
+            else {
+                console.log('Không có dữ liệu trong localStorage.');
+            }
+        }
+        const findInput = ['findspace', 'maxprice', 'minprice', 'quatlung', 'quattreotuong', 'quatdung', 'quattran', 'Asia', 'Senko', 'Panasonic', 'Kangaroo'];
+        findInput.forEach(id => {
+            document.getElementById(id).addEventListener('keypress', function (event) {
+                if (event.key == 'Enter') {
+                    const find = document.getElementById('findspace').value.trim();
+                    let minprice = document.getElementById('minprice').value;
+                    let maxprice = document.getElementById('maxprice').value;
+
+                    if (minprice == '') minprice = 0;
+                    if (maxprice == '') maxprice = Infinity;
+
+
+                    minprice = Number(minprice.toString().replace(/\./g, ''));
+                    maxprice = Number(maxprice.toString().replace(/\./g, ''));
+
+                    const selectedCategories = Array.from(document.querySelectorAll('input[name="loai"]:checked')).map(checkbox => checkbox.id);
+                    const selectedBrands = Array.from(document.querySelectorAll('input[name="thuonghieu"]:checked')).map(checkbox => checkbox.id);
+
+                    if (minprice <= maxprice) {
+                        findItem(find, minprice, maxprice, selectedCategories, selectedBrands);
+                        delHighLightCategoryCurrent();
+                    }
+                    else {
+                        displayToast('Vui lòng nhập giá trị hợp lệ.');
+                        console.log('Vui lòng nhập đúng từ khóa và giá trị hợp lệ.');
+                    }
+                }
+            });
+        });
+        function dinhdangso(inputElement) {
+            // Lấy giá trị hiện tại và loại bỏ các ký tự không phải số
+            let value = inputElement.value.replace(/[^0-9]/g, '');
+            value = reverseNumber(value);
+            // Chia giá trị thành các nhóm 4 số và nối bằng dấu ' - '
+            let formattedValue = value.match(/.{1,3}/g)?.join('.') || '';
+
+            // Gán giá trị định dạng lại vào input
+            inputElement.value = reverseNumber(formattedValue).toString();
+        }
+        function reverseNumber(num) {
+            const reversed = num.toString().split('').reverse().join('');
+            // return Math.sign(num) * parseInt(reversed);
+            return reversed;
+        }
+
+        //Button reset filter
+        function resetFilter() {
+            const searchInput = document.querySelectorAll(".searchInput");
+            const chkboxs = document.querySelectorAll("input[type = checkbox]");
+            searchInput.forEach(input => input.value = '');
+            chkboxs.forEach(chkbox => chkbox.checked = false);
+            phantrang(productList, itemsPerPage);
+        }
+        function updateQuantity() {
+            const itemQuantityElement = document.getElementById('item-quantity');
+            if (!itemQuantityElement) {
+                console.log('Phần tử item-quantity không tồn tại trong DOM.');
+                return;
+            }
+
+            const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+            let totalQuantity = 0;
+            cartItems.forEach(item => {
+                totalQuantity += Number(item.quantity);
+            });
+
+            if (totalQuantity != 0) {
+                if (totalQuantity > 9) totalQuantity = '9+';
+                itemQuantityElement.style.display = 'block';
+                itemQuantityElement.innerText = totalQuantity;
+            } else {
+                itemQuantityElement.style.display = 'none';
+            }
+        }
+        document.addEventListener('DOMContentLoaded', function () {
+            startAnimation();
+
+            // Lấy dữ liệu sản phẩm từ localStorage
+            const productList = JSON.parse(localStorage.getItem('productList')) || [];
+
+            // Kiểm tra xem dữ liệu có tồn tại hay không
+            if (productList.length > 0) {
+                phantrang(productList, itemsPerPage);
+            } else {
+                console.log('Không có dữ liệu trong localStorage.');
+            }
+
+            Exit(0, displayTableDetail);
+            displayProductDetailTable();
+            updateQuantity(); // Gọi hàm này khi DOM đã sẵn sàng
+        });
+        function displayIntro() {
+            const wrapIntro = document.getElementById("wrapIntro");
+            wrapIntro.style.display = 'block';
+            wrapIntro.style.backdropFilter = 'blur(4px)';
+        }
+        function addToCart() {
+            const node = document.getElementById('info-product');
+            const btn = document.querySelector('.add-to-cart');
+            btn.addEventListener('click', function () {
+                const item = {
+                    id: node.querySelector('#product-id').textContent,
+                    quantity: node.querySelector('.num').value
+                };
+                const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                let flag = false;
+                cart.forEach(cartItem => {
+                    if (cartItem.id == item.id) {
+                        cartItem.quantity = Number(cartItem.quantity);
+                        cartItem.quantity += Number(item.quantity);
+                        flag = true;
+                    }
+                });
+                if (!flag) cart.push(item);
+
+                localStorage.setItem('cart', JSON.stringify(cart));
+
+                setTimeout(() => {
+                    const bagIcon = document.getElementById('topmenu_icon--bag');
+                    if (bagIcon) {
+                        bagIcon.classList.add('show');
+                        updateQuantity();
+                        setTimeout(() => {
+                            bagIcon.classList.remove('show');
+                        }, 700);
+                    }
+                }, 1100);
+            });
+        }
+
+
+
+
+        // document.addEventListener('DOMContentLoaded', displayOrders);
+        window.onload = function () {
+            startAnimation(); // Lấy dữ liệu sản phẩm từ localStorage 
+            const productList = JSON.parse(localStorage.getItem('productList')) || []; // Kiểm tra xem dữ liệu có tồn tại hay không 
+            if (productList.length > 0) {
+                phantrang(productList, itemsPerPage);
+
+            } else { console.log('Không có dữ liệu trong localStorage.'); }
+            Exit(0, displayTableDetail);
+            Exit(1, wrapIntro);
+            taoleftmenu();
+            displayProductDetailTable(); updateQuantity();
+        };
+
+    </script>
+</body>
+
+</html>

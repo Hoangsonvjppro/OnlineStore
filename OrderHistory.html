@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    <link rel="stylesheet" href="./assets/css/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <div id="topmenu">
+        <div id="topmenu-left">
+            <div id="topmenu_text" onclick="window.location.href='index.html'">
+                ONLY.FANS
+            </div>
+            <div id="topmenu_list">
+                <div id="topmenu_list_item">
+                    <div onclick="window.location.href='index.html'">Trang Chủ</div>
+                    <div>Liên Hệ</div>
+                    <div>Cửa Hàng</div>
+                    <div>Giới Thiệu</div>
+                    <div>Lịch Sử Đặt Hàng</div>
+                </div>
+            </div>
+        </div>
+        <div id="topmenu-right" style="display: flex; align-items: center;">
+            <div id="topmenu_icon">
+                <div id="topmenu_icon--bar"><i class="fa-solid fa-bars-staggered" onclick="hien('bar_wrap');"></i></div>
+                <div id="topmenu_icon--gear" onclick="window.location.href='admin.html'"><i
+                        class="fa-solid fa-gear"></i>
+                </div>
+                <div id="user--info" style="width: max-content;">
+                    <div id="user--name"></div>
+                    <div class=" user--selection hidden">
+                        <div>
+                            <div class="user-information">Thông tin cá nhân</div>
+                            <div class="changePass">Đổi mật khẩu</div>
+                            <div class="logout">Đăng xuất</div>
+                        </div>
+                    </div>
+                </div>
+                <div id="topmenu_icon--user">
+                    <div id="icon--user" style="position: relative;">
+                        <i class="fa-regular fa-user"></i>
+                        <div class="user--selection hidden">
+                            <div>
+                                <div class="user-information">Thông tin cá nhân</div>
+                                <div class="changePass">Đổi mật khẩu</div>
+                                <div class="logout">Đăng xuất</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="topmenu_icon--find"><i class="fa-solid fa-magnifying-glass" onclick="hien('find_wrap');"></i>
+                </div>
+                <div id="topmenu_icon--bag" style="position: relative;">
+                    <i class="fa-solid fa-bag-shopping" onclick="window.location.href='cart.html'"></i>
+                    <p id="item-quantity"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="changePassForm hidden">
+        <span class="close-login" id="cancelChangePass">&times;</span>
+        <h3>Đổi mật khẩu</h3>
+        <form id="changePassForm">
+            <input id="repass" type="password" placeholder="Mật khẩu hiện tại" required />
+            <input id="repass" type="password" placeholder="Mật khẩu mới" required />
+            <input id="repass" type="password" placeholder="Nhập lại mật khẩu mới" required />
+            <button type="submit">Xác nhận</button>
+
+        </form>
+    </div>
+    <div class="login" id="container-login" style="display: none;">
+        <div class="login-content">
+            <span class="close-login" id="CloseFormLogin">&times;</span>
+            <div class="form-container sign-in-container">
+                <form action="#">
+                    <h1>Đăng nhập</h1>
+                    <div class="social-container">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-google-plus-g"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+
+                    <span>Hoặc sử dụng tài khoản đã có</span>
+                    <input type="text" placeholder="Số điện thoại hoặc Tên tài khoản" />
+                    <input type="password" placeholder="Mật khẩu" />
+                    <button class="block-item">Đăng nhập</button>
+                    <a>Chưa có tài khoản?</a>
+                    <div class="register">
+                        <a id="GoToSignUp">Đăng kí</a>
+                    </div>
+                </form>
+            </div>
+
+            <div class="form-container sign-up-container">
+                <form action="#">
+                    <h1>Đăng kí</h1>
+                    <span>Điền các thông tin sau:</span>
+                    <input type="text" placeholder="Số điện thoại" />
+                    <input type="text" placeholder="Tên tài khoản" />
+                    <input type="password" placeholder="Mật khẩu" />
+                    <input type="password" placeholder="Nhập lại mật khẩu" />
+                    <button class="block-item">Đăng kí</button>
+                    <div class="register">
+                        <a id="SignUpBackToSignIn">Quay lại</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="bar_wrap">
+        <div id="bar">
+            <div id="bar_text">
+                MENU
+            </div>
+            <div id="bar_list">
+                <ul>
+                    <li onclick="window.location.href='index.html'">Trang Chủ</li>
+                    <li>Liên Hệ</li>
+                    <li>Cửa Hàng</li>
+                    <li>Giới Thiệu</li>
+                    <li>Lịch Sử Đặt Hàng</li>
+                </ul>
+            </div>
+            <div id="bar_bottom">
+                Liên Hệ: 0987654321
+            </div>
+        </div>
+    </div>
+    <div id="order_history">
+        <h1>Lịch sử đặt hàng</h1>
+        <table id="order-history-table">
+            <thead>
+                <tr>
+                    <th>Mã đơn hàng</th>
+                    <th>Ngày đặt</th>
+                    <th>Tổng tiền</th>
+                    <th>Sản Phẩm</th>
+                    <th>Địa chỉ nhận hàng</th>
+                    <th>Phương thức thanh tóan</th>
+                    <th>Trạng thái</th>
+                </tr>
+            <tbody id="orders-table-body">
+
+            </tbody>
+            </thead>
+        </table>
+    </div>
+    <div id="chua-mua-hang">
+        <div style="width: max-content; margin: 24px auto;">
+            <i class="fa-regular fa-face-frown-open fa-6x"></i>
+        </div>
+        <div style="margin-bottom: 200px;">
+            <p style="text-align: center; font-size: larger;">Bạn chưa mua quạt bên mình :(</p>
+        </div>
+    </div>
+    <div id="information">
+        <h2>Nhận thông tin khuyến mãi mới nhất</h2>
+        <p>Để lại email của bạn để nhận những thông tin khuyến mãi mới nhất từ chúng tôi</p>
+        <div id="input-information">
+            <input type="email" name="email-info" id="email-info" placeholder="Email của bạn">
+            <button onclick="checkEmailkhuyenmai()" id="emailkhuyenmai">
+                <i class="fa-solid fa-arrow-right" style="color: white;"></i>
+            </button>
+        </div>
+    </div>
+    <div id="footer">
+        <div id="footer-container">
+            <div class="footer-item">
+                <img src="Logo-DH-Sai-Gon-SGU-flat.webp" alt="">
+            </div>
+            <div class="footer-item">
+                <h4>Thông tin hữu ích</h4>
+                <a href="">Kiểm tra size quạt</a>
+                <br>
+                <a href="">Hướng dẫn bảo hành</a>
+                <br>
+                <a href="">Quy định đổi quạt</a>
+            </div>
+            <div class="footer-item">
+                <h4>Giới thiệu</h4>
+                <a href="">Quan niệm về quạt</a>
+                <br>
+                <a href="">Danh sách cửa hàng</a>
+                <br>
+                <a href="">Dành cho đại lý</a>
+            </div>
+            <div class="footer-item">
+                <h4>Thông tin liên hệ</h4>
+                <p>Địa chỉ: 273 An Dương Vương, P3, Quận 5, TP.HCM</p>
+                <p>Số điện thoại: 0912345JQK</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="./js/OrderHistory.js"></script>
+    <script src="./js/login.js"></script>
+    <!-- <script src="./js/cart.js"></script> -->
+</body>
+
+</html>

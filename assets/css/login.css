@@ -1,0 +1,312 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+
+.login {
+    border: solid 2px blue;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* width: 100%; */
+    /* height: auto; */
+    /* background: rgba(0, 0, 0, 0.5); */
+    /* display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center; */
+    z-index: 1000;
+    border-radius: 10px;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    overflow: hidden;
+}
+
+.login * {
+    box-sizing: border-box;
+}
+
+
+
+.login h1 {
+    font-weight: bold;
+    margin-bottom: 20px;
+    font-size: 40px;
+}
+
+.login h2 {
+    text-align: center;
+}
+
+.login p {
+    font-size: 24px;
+    font-weight: 100;
+    line-height: 20px;
+    letter-spacing: 0.5px;
+    margin: 20px 0 30px;
+}
+
+.login span {
+    font-size: 16px;
+    margin-top: 5px;
+}
+
+.login a {
+    font-size: 14px;
+    text-decoration: none;
+    /* margin: 15px;
+    padding: 20px; */
+
+}
+
+.login button {
+    border-radius: 20px;
+    border: solid 1px #6d6be2;
+    background-color: #5c72e0;
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 12px 45px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    /* transition: transform 80ms ease-in; */
+}
+
+.login button:hover {
+    background-color: #4b61cf;
+}
+
+.login button:active {
+    transform: scale3d(0.95);
+    box-shadow: 0 5px #a99dea;
+}
+
+
+.login form {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 50px;
+    height: 100%;
+    text-align: center;
+    width: 350px;
+    transition: transform 0.3s ease-in-out;
+    /* chuyen trang */
+}
+
+
+.login input {
+    background-color: #eee;
+    color: black;
+    border: none;
+    padding: 12px 15px;
+    margin: 10px 0;
+    width: 100%;
+}
+
+.login input::placeholder {
+    color: #7d7d7e;
+    font-family: inherit;
+}
+
+.login .register {
+    border-bottom: solid 2px black;
+    color: blue;
+    cursor: pointer;
+}
+
+.login .block-item {
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+
+/* .login .container-login {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    position: relative;
+    width: 350px;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+} */
+
+.login .social-container a {
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 5px;
+    height: 40px;
+    width: 40px;
+}
+
+
+
+.login .login-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+}
+
+.login .sign-up-container {
+    display: none;
+}
+
+.login .close-login {
+    position: absolute;
+    padding: 0 5px;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: rgb(233, 233, 245);
+}
+
+#logout--button {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: 2px;
+    padding: 2px 0px;
+    border-radius: 5px;
+    z-index: 10;
+    width: 60px;
+}
+
+#user--name {
+    font-size: 16px;
+    color: #fff;
+    position: relative;
+    cursor: pointer;
+    display: block;
+}
+
+#user--logout {
+    margin: 0px 0px;
+}
+
+@media only screen and (max-width:1080px) {
+    #user--logout {
+        position: absolute;
+        left: 45%;
+    }
+}
+
+.changePassForm {
+    background-color: #fafafa;
+    border: solid 2px rgb(55, 115, 180);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* width: 100%; */
+    /* height: auto; */
+    /* background: rgba(0, 0, 0, 0.5); */
+    /* display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center; */
+    z-index: 1000;
+    border-radius: 10px;
+    box-shadow: 0 14px 28px rgba(27, 43, 32, 0.25), 0 10px 10px rgba(101, 231, 101, 0.22);
+    overflow: hidden;
+}
+.changePassForm button {
+    border-radius: 20px;
+    border: solid 1px #6d6be2;
+    background-color: #5c72e0;
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 12px 45px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
+    margin-top: 10px;
+    margin-bottom: -20px;
+}
+
+.changePassForm input {
+    background-color: #eee;
+    color: black;
+    border: none;
+    padding: 12px 15px;
+    margin: 10px 0;
+    width: 100%;
+}
+.changePassForm h3 {
+    font-weight: bold;
+    font-size: 30px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin-top: 12px;
+}
+
+.changePassForm form {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 50px;
+    height: 100%;
+    text-align: center;
+    width: 350px;
+    transition: transform 0.3s ease-in-out;
+    /* chuyen trang */
+}
+.changePassForm button:hover {
+    background-color: #4b61cf;
+}
+
+.changePassForm button:active {
+    transform: scale3d(0.95);
+    box-shadow: 0 5px #a99dea;
+}
+
+.changePassForm .close-login {
+    position: absolute;
+    padding: 0 5px;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: rgb(203, 203, 248);
+}
+
+#user--name {
+    font-family: Arial, Helvetica, sans-serif;
+    border: solid black 1px;
+    border-radius: 15px;
+    padding: 5px 15px;
+    background-color: #4f5051;
+    
+}
+#user--name:hover {
+    background-color: #676870;
+}
+
+#user--name:active {
+    transform: scale3d(0.95);
+    box-shadow:0 2px #232226;
+}
+#box--name {
+    border-radius:5px;
+}
+#box--name div:hover {
+   
+    border-radius: 5px;
+    background-color: #f0f0f0;
+}

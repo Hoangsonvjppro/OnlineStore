@@ -1,0 +1,750 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    <link rel="stylesheet" href="./assets/css/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <div id="topmenu">
+        <div id="topmenu-left">
+            <div id="topmenu_text" onclick="window.location.href='index.html'">
+                ONLY.FANS
+            </div>
+            <div id="topmenu_list">
+                <div id="topmenu_list_item">
+                    <div onclick="window.location.href='index.html'">Trang Chủ</div>
+                    <div>Liên Hệ</div>
+                    <div>Cửa Hàng</div>
+                    <div>Giới Thiệu</div>
+                    <div onclick="window.location.href='OrderHistory.html'">Lịch Sử Đặt Hàng</div>
+                </div>
+            </div>
+        </div>
+        <div id="topmenu-right" style="display: flex; align-items: center;">
+            <div id="topmenu_icon">
+                <div id="topmenu_icon--bar"><i class="fa-solid fa-bars-staggered" onclick="hien('bar_wrap');"></i></div>
+                <div id="topmenu_icon--gear" onclick="window.location.href='admin.html'"><i
+                        class="fa-solid fa-gear"></i>
+                </div>
+                <div id="user--info" style="width: max-content;">
+                    <div id="user--name"></div>
+                    <div class=" user--selection hidden">
+                        <div>
+                            <div class="user-information">Thông tin cá nhân</div>
+                            <div class="changePass">Đổi mật khẩu</div>
+                            <div class="logout">Đăng xuất</div>
+                        </div>
+                    </div>
+                </div>
+                <div id="topmenu_icon--user" style="position: relative;">
+                    <div id="icon--user">
+                        <i class="fa-regular fa-user"></i>
+                        <div class="user--selection hidden">
+                            <div>
+                                <div class="user-information">Thông tin cá nhân</div>
+                                <div class="changePass">Đổi mật khẩu</div>
+                                <div class="logout">Đăng xuất</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="topmenu_icon--find"><i class="fa-solid fa-magnifying-glass" onclick="hien('find_wrap');"></i>
+                </div>
+                <div id="topmenu_icon--bag" style="position: relative;">
+                    <i class="fa-solid fa-bag-shopping" onclick="window.location.href='cart.html'"></i>
+                    <p id="item-quantity"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="login" id="container-login" style="display: none;">
+        <div class="login-content">
+            <span class="close-login" id="CloseFormLogin">&times;</span>
+            <div class="form-container sign-in-container">
+                <form action="#" id="dangnhap-form">
+                    <h1>Đăng nhập</h1>
+                    <div class="social-container">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-google-plus-g"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+
+                    <span>Hoặc sử dụng tài khoản đã có</span>
+                    <input type="text" placeholder="Số điện thoại hoặc Tên tài khoản" />
+                    <input type="password" placeholder="Mật khẩu" />
+                    <button class="block-item">Đăng nhập</button>
+                    <a>Chưa có tài khoản?</a>
+                    <div class="register">
+                        <a id="GoToSignUp">Đăng kí</a>
+                    </div>
+                </form>
+            </div>
+
+            <div class="form-container sign-up-container">
+                <form action="#" id="dangky-form">
+                    <h1>Đăng kí</h1>
+                    <span>Điền các thông tin sau:</span>
+                    <input type="text" placeholder="Số điện thoại" />
+                    <input type="text" placeholder="Tên tài khoản" />
+                    <input type="password" placeholder="Mật khẩu" />
+                    <input type="password" placeholder="Nhập lại mật khẩu" />
+                    <button class="block-item">Đăng kí</button>
+                    <div class="register">
+                        <a id="SignUpBackToSignIn">Quay lại</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="bar_wrap">
+        <div id="bar">
+            <div id="bar_text">
+                MENU
+            </div>
+            <div id="bar_list">
+                <ul>
+                    <li onclick="window.location.href='index.html'">Trang Chủ</li>
+                    <li>Liên Hệ</li>
+                    <li>Cửa Hàng</li>
+                    <li>Giới Thiệu</li>
+                    <li onclick="window.location.href='OrderHistory.html'">Lịch Sử Đặt Hàng</li>
+                </ul>
+            </div>
+            <div id="bar_bottom">
+                Liên Hệ: 0987654321
+            </div>
+        </div>
+    </div>
+    <div
+        style="margin: 10px 0 0 100px; border-bottom: 5px solid black; display: inline-block; padding-bottom: 4px; font-size: 32px;">
+        Giỏ hàng
+    </div>
+    <div id="display-personal-info">
+        <div id="wrap-personal-info">
+            <div class="payment-title">
+                Thông tin cá nhân
+                <button id="closePersonalInfo" onclick="closePersonalInfoTable();">x</button>
+            </div>
+            <form id="personal-form">
+                <div class="payment-input">
+                    <label for="namePersonal">Họ và tên</label>
+                    <input type=" text" name="hotentxt" id="namePersonal" placeholder="Nguyễn Văn A"
+                        oninput="checkName(this)">
+                    <span class="error-input">Họ tên không hợp lệ</span>
+                </div>
+                <div style="display: flex; width: 100%;" id="personal-form-2">
+                    <div class="payment-input" style="margin-right: 10px; flex: 2;" id="personal-form-2-email">
+                        <label for="emailPersonal">Email</label>
+                        <input type=" text" name="email" id="emailPersonal" placeholder="nguyenvana@gmail.com"
+                            oninput="checkEmail(this)">
+                        <span class="error-input">Email không hợp lệ</span>
+                    </div>
+                    <div class="payment-input" style="flex: 1;">
+                        <label for="phonePersonal">Số điện thoại</label>
+                        <input type="text" name="phone" id="phonePersonal" placeholder="0987654321"
+                            oninput="checkSDT(this)" maxlength="10">
+                        <span class="error-input">SĐT không hợp lệ</span>
+                    </div>
+                </div>
+
+                <div class="payment-input">
+                    <label for="addressPersonal">Địa chỉ</label>
+                    <input type=" text" name="address" id="addressPersonal"
+                        placeholder="273 An Dương Vương P3 Quận 5 TPHCM" oninput="checkDiaChi(this)">
+                    <span class="error-input">Địa chỉ không hợp lệ</span>
+                </div>
+                <div id="diachi-selection">
+                    <div class="dropdown">
+                        <div class="select" id="city-dropdown">
+                            <div>
+                                <div>Tỉnh / thành</div>
+                                <div class="selected" id="city-selected" style="color: #6c6c6c;">Chọn tỉnh / thành</div>
+                            </div>
+                            <div class="btn">
+                                <i class="fa-solid fa-chevron-down caret"></i>
+                            </div>
+                        </div>
+                        <ul class="menu" id="city-menu">
+                            <li data-city="TPHCM">TP.HCM</li>
+                            <li data-city="HN">Hà Nội</li>
+                            <!-- <li data-city="">Đà Nẵng</li> -->
+                            <li>Hihi</li>
+                        </ul>
+                    </div>
+                    <div class="dropdown">
+                        <div class="select" id="district-dropdown">
+                            <div>
+                                <div>Quận / huyện</div>
+                                <div class="selected" id="district-selected" style="color: #6c6c6c;">Chọn quận / huyện
+                                </div>
+                            </div>
+                            <div class="btn">
+                                <i class="fa-solid fa-chevron-down caret"></i>
+                            </div>
+                        </div>
+                        <ul class="menu" id="district-menu">
+                        </ul>
+                    </div>
+                    <div class="dropdown">
+                        <div class="select" id="ward-dropdown">
+                            <div>
+                                <div>Phường / xã</div>
+                                <div class="selected" id="ward-selected" style="color: #6c6c6c;">Chọn phường / xã</div>
+                            </div>
+                            <div class="btn">
+                                <i class="fa-solid fa-chevron-down caret"></i>
+                            </div>
+                        </div>
+                        <ul class="menu" id="ward-menu">
+                        </ul>
+                    </div>
+                </div>
+                <button type="submit" id="confirmPersonalInfo">Xác nhận</button>
+            </form>
+        </div>
+    </div>
+    <div id="payment-method">
+        <div id="payment-method-popup">
+            <div style="position: relative; padding: 10px; border-bottom: 1px black solid; background-color: #0d5146;">
+                <p style="text-align: center; font-size: 18px; color: white;"><strong>THÔNG TIN THẺ</strong></p>
+                <i class="fa-solid fa-xmark" id="close-payment-popup" onclick="DongPopUpThanhtoan()"></i>
+            </div>
+            <div style="width: 80%; margin: 14px auto;">
+                <form action="" id="payment-form">
+                    <div style="padding-top: 4px;">
+                        <p class="payment-title">THÔNG TIN CÁ NHÂN</p>
+                        <div style="display: flex; width: 100%;" id="payment-input-1">
+                            <div class="payment-input" style="margin-right: 10px;" id="payment-input-1-firstname">
+                                <label for="firstname">Họ</label>
+                                <input type="text" name="firstname" id="firstname" class="" placeholder="Hồ"
+                                    oninput="checkName(this)">
+                                <span class="error-input">Không được để trống</span>
+                            </div>
+                            <div class="payment-input">
+                                <label for="lastname">Tên</label>
+                                <input type="text" name="lastname" id="lastname" placeholder="Hoàng Long"
+                                    oninput="checkName(this)">
+                                <span class="error-input">Không được để trống</span>
+                            </div>
+                        </div>
+                        <div class="payment-input">
+                            <label for="email">Email</label>
+                            <input type="email" name="email" id="email" placeholder="hohoanglong@gmail.com"
+                                oninput="checkEmail(this)">
+                            <span class="error-input">Email không hợp lệ</span>
+                        </div>
+                        <div class="payment-input">
+                            <label for="diachi">Địa chỉ</label>
+                            <input type="text" name="diachi" id="diachi" placeholder="273 An Dương Vương Quận 5 TP.HCM"
+                                oninput="checkDiaChi(this)">
+                            <span class="error-input">Địa chỉ không hợp lệ</span>
+                        </div>
+                    </div>
+                    <div style="padding-top: 20px;">
+                        <p class="payment-title">THÔNG TIN TÀI KHOẢN</p>
+                        <div style="display: flex; width: 100%;">
+                            <div class="payment-input" style="margin-right: 10px; flex: 3;">
+                                <label for="sothe">Số thẻ</label>
+                                <input type="text" name="sothe" id="sothe" placeholder="XXXX - XXXX - XXXX - XXXX"
+                                    maxlength="19" oninput="DinhDangSoThe(this)">
+                                <span class="error-input">Số thẻ phải đủ 16 số</span>
+                            </div>
+                            <div class="payment-input" style="flex: 1;">
+                                <label for="ccv">CVC</label>
+                                <input type="password" name="ccv" id="ccv" placeholder="XXX" maxlength="3"
+                                    oninput="checknumber(this)">
+                                <span class="error-input">Không hợp lệ</span>
+                            </div>
+                        </div>
+                        <div style="display: flex; width: 100%;">
+                            <div class="payment-input" style="margin-right: 10px; flex: 1;">
+                                <label for="hanthe">Hạn thẻ</label>
+                                <input type="text" name="hanthe" id="hanthe" placeholder="MM / YY" maxlength="5"
+                                    oninput="DinhDangNgay(this)">
+                                <span class="error-input">Hạn thẻ không hợp lệ</span>
+                            </div>
+                            <div class="payment-input" style="flex: 1;">
+                                <label for="zipcode">Mã ZIP</label>
+                                <input type="text" name="zipcode" id="zipcode" placeholder="XXXXX" maxlength="5"
+                                    oninput="checknumber(this)">
+                                <span class="error-input">Phải đủ 5 số</span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- <div id="payment-btn"> -->
+                    <button id="payment-btn" type="submit">HOÀN TẤT</button>
+                    <!-- </div> -->
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="changePassForm hidden">
+        <span class="close-login" id="cancelChangePass">&times;</span>
+        <h3>Đổi mật khẩu</h3>
+        <form id="changePassForm">
+            <input id="repass" type="password" placeholder="Mật khẩu hiện tại" required />
+            <input id="repass" type="password" placeholder="Mật khẩu mới" required />
+            <input id="repass" type="password" placeholder="Nhập lại mật khẩu mới" required />
+            <button type="submit">Xác nhận</button>
+
+        </form>
+    </div>
+    <div id="toast">
+        <div style="text-align: center; font-size: 20px; margin-top: 10px; font-weight: 700;">Thông báo</div>
+        <div id="toast-msg" style="margin-top: 20px; text-align: center;"></div>
+    </div>
+    <div id="cart">
+        <div class="left">
+            <div id="empty-cart" style="display: none; margin: 100px auto; width: max-content; user-select: none;">
+                <div style="width: max-content; margin: 10px auto;">
+                    <i class="fa-solid fa-cart-shopping fa-5x"></i>
+                </div>
+                <p style="text-align: center;">
+                    Giỏ hàng của bạn đang trống
+                </p>
+            </div>
+            <div class="container">
+                <table>
+                    <tbody id="cart-container">
+                        <!-- <tr>
+                            <th></th>
+                            <th>Tên sản phẩm</th>
+                            <th>Đơn giá</th>
+                            <th>Số lượng</th>
+                            <th>Tổng</th>
+                            <th></th>
+                        </tr> -->
+                        <!-- <tr class="cart-item">
+                            <td style="display: none;">msp1</td>
+                            <td><img src="Logo-DH-Sai-Gon-SGU-flat.webp" alt="" style="height: 55px;"></td>
+                            <td>
+                                Quạt máy senko
+                            </td>
+                            <td>
+                                <p class="item-price">
+                                    200.000 VNĐ
+                                </p>
+                            </td>
+                            <td>
+                                <div id="chinhsoluong">
+                                    <button style="color: gray;" class="decrease">
+                                        -
+                                    </button>
+                                    <p class="quantity">1</p>
+                                    <button class="increase">
+                                        +
+                                    </button>
+                                </div>
+                            </td>
+                            <td>
+                                <p class="item-total">
+                                    200.000 VNĐ
+                                </p>
+                            </td>
+                            <td>
+                                <div class="xoa">
+                                    <i class="fa-solid fa-xmark"></i>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="cart-item">
+                            <td style="display: none;">msp2</td>
+                            <td><img src="Logo-DH-Sai-Gon-SGU-flat.webp" alt="" style="height: 55px;"></td>
+                            <td>
+                                Quạt máy senko
+                            </td>
+                            <td>
+                                <p class="item-price">
+                                    200.000 VNĐ
+                                </p>
+                            </td>
+                            <td>
+                                <div id="chinhsoluong">
+                                    <button style="color: gray;" class="decrease">
+                                        -
+                                    </button>
+                                    <p class="quantity">1</p>
+                                    <button class="increase">
+                                        +
+                                    </button>
+                                </div>
+                            </td>
+                            <td>
+                                <p class="item-total">
+                                    200.000 VNĐ
+                                </p>
+                            </td>
+                            <td>
+                                <div class="xoa">
+                                    <i class="fa-solid fa-xmark"></i>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="cart-item">
+                            <td style="display: none;">msp3</td>
+                            <td><img src="Logo-DH-Sai-Gon-SGU-flat.webp" alt="" style="height: 55px;"></td>
+                            <td>
+                                Quạt máy senko
+                            </td>
+                            <td>
+                                <p class="item-price">
+                                    200.000 VNĐ
+                                </p>
+                            </td>
+                            <td>
+                                <div id="chinhsoluong">
+                                    <button style="color: gray;" class="decrease">
+                                        -
+                                    </button>
+                                    <p class="quantity">1</p>
+                                    <button class="increase">
+                                        +
+                                    </button>
+                                </div>
+                            </td>
+                            <td>
+                                <p class="item-total">
+                                    200.000 VNĐ
+                                </p>
+                            </td>
+                            <td>
+                                <div class="xoa">
+                                    <i class="fa-solid fa-xmark"></i>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="cart-item">
+                            <td style="display: none;">msp4</td>
+                            <td><img src="Logo-DH-Sai-Gon-SGU-flat.webp" alt="" style="height: 55px;"></td>
+                            <td>
+                                Quạt máy senko
+                            </td>
+                            <td>
+                                <p class="item-price">
+                                    200.000 VNĐ
+                                </p>
+                            </td>
+                            <td>
+                                <div id="chinhsoluong">
+                                    <button style="color: gray;" class="decrease">
+                                        -
+                                    </button>
+                                    <p class="quantity">1</p>
+                                    <button class="increase">
+                                        +
+                                    </button>
+                                </div>
+                            </td>
+                            <td>
+                                <p class="item-total">
+                                    200.000 VNĐ
+                                </p>
+                            </td>
+                            <td>
+                                <div class="xoa">
+                                    <i class="fa-solid fa-xmark"></i>
+                                </div>
+                            </td>
+                        </tr> -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="right">
+            <div class="container">
+                <div
+                    style="border-bottom: 1px black solid; text-align: center; padding: 14px; font-size: 18px; font-weight: 600;">
+                    HÓA ĐƠN
+                </div>
+                <div id="payment-info">
+                    <div id="info">
+                        <!-- <p>Họ và tên: Hồ Hoàng Long</p>
+                        <p>Địa chỉ: hihihihi</p>
+                        <p>SĐT: hihihi</p> -->
+                    </div>
+                    <div style="display: flex; justify-content: space-between; width: 90%; margin: 0 auto;">
+                        <div>
+                            <p>
+                                TỔNG CỘNG:
+                            </p>
+                        </div>
+                        <div style="text-align: right;">
+                            <p id="total-price" style="font-size: 1.2rem;">0 VNĐ</p>
+                            <p style="font-size: 13px; font-weight: 100; color: grey;">(Đã bao gồm VAT nếu có)</p>
+                        </div>
+                    </div>
+                    <div style="width: 90%; margin: 12 auto;">
+                        <button
+                            style="background-color: #0d5146; width: 100%; padding: 6px; font-weight: 700; color: white; cursor: pointer;"
+                            id="ThanhToanbtn" onclick="ThanhToan()">THANH
+                            TOÁN</button>
+                    </div>
+                    <div id="payment">
+                        <i class=" fa-brands fa-cc-visa fa-xl payment-icon" onclick="MoPopUpThanhtoan(this)"></i>
+                        <i class="fa-brands fa-cc-mastercard fa-xl payment-icon" onclick="MoPopUpThanhtoan(this)"></i>
+                        <i class="fa-regular fa-credit-card fa-xl payment-icon" onclick="MoPopUpThanhtoan(this)"></i>
+                        <i class="fa-solid fa-money-bill-1-wave payment-icon fa-xl"
+                            onclick="MoPopUpThanhtoan(this)"></i>
+                    </div>
+                </div>
+                <div id="not_payment-info">
+                    <div style="width: max-content; margin: 10px auto">
+                        <i class=" fa-regular fa-address-card fa-4x"></i>
+                    </div>
+                    <p style="text-align: center;">Bạn phải nhập thông tin cá nhân trước khi mua hàng</p>
+                    <div style="width: 80%; margin: 40px auto;">
+                        <div style="width: max-content; margin: 0 auto; background-color: #0d5146; padding: 20px; color: white; border-radius: 10px; cursor: pointer;"
+                            onclick="openPersonalInfoTable()">
+                            Nhập thông tin</div>
+                    </div>
+                </div>
+                <div id="not_login">
+                    <div style="width: max-content; margin: 10px auto">
+                        <i class=" fa-regular fa-address-card fa-4x"></i>
+                    </div>
+                    <p style="text-align: center;">Bạn phải đăng nhập trước khi mua hàng</p>
+                    <div style="width: 80%; margin: 40px auto;">
+                        <div style="width: max-content; margin: 0 auto; background-color: #0d5146; padding: 20px; color: white; border-radius: 10px; cursor: pointer;"
+                            onclick="showLogin()">
+                            Đăng nhập</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="nhapdiachi_wrap">
+        <div id="nhapdiachi-form">
+            <div
+                style="text-align: center; padding: 12px; background-color: #0d5146; color: white; position: relative;;">
+                CHỌN ĐỊA CHỈ GIAO HÀNG
+                <div style="position: absolute; right: 2%; top: 36%; cursor: pointer;" id="diachi-btn">
+                    <i class="fa-solid fa-xmark"></i>
+                </div>
+            </div>
+            <div id="chondiachi-form">
+                <div class="nhapdiachi-input">
+                    <div style="text-align: center; padding-top: 12px; font-weight: 700; font-size: larger;">
+                        Chọn địa chỉ giao hàng mặc định
+                    </div>
+                    <div class="payment-input valid">
+                        <label for="diachicuaban">Địa chỉ</label>
+                        <p id="diachicuaban" style="margin: 4px 2px; user-select: none;"></p>
+                    </div>
+                    <div id="diachi-selection-2">
+                        <div class="dropdown">
+                            <div class="select" id="city-dropdown-cuaban">
+                                <div>
+                                    <div>Tỉnh / thành</div>
+                                    <div class="selected" id="city-selected-cuaban">
+                                    </div>
+                                </div>
+                                <div class="btn">
+                                    <i class="fa-solid fa-chevron-down caret"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dropdown">
+                            <div class="select" id="district-dropdown-cuaban">
+                                <div>
+                                    <div>Quận / huyện</div>
+                                    <div class="selected" id="district-selected-cuaban">
+                                    </div>
+                                </div>
+                                <div class="btn">
+                                    <i class="fa-solid fa-chevron-down caret"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dropdown">
+                            <div class="select" id="ward-dropdown-cuaban">
+                                <div>
+                                    <div>Phường / xã</div>
+                                    <div class="selected" id="ward-selected-cuaban">
+                                    </div>
+                                </div>
+                                <div class="btn">
+                                    <i class="fa-solid fa-chevron-down caret"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="diachicuaban-btn" style=" text-align: center; padding: 12px; width: 100%; color: white; background-color:
+                        #0d5146; margin: 16px auto; cursor: pointer;">
+                        CHỌN</div>
+                </div>
+                <div class="nhapdiachi-input">
+                    <div style="text-align: center; padding-top: 12px; font-weight: 700; font-size: larger;">
+                        Chọn địa chỉ giao hàng khác
+                    </div>
+                    <div class="payment-input">
+                        <label for="addressPersonal">Địa chỉ</label>
+                        <input type=" text" id="diachinhap" placeholder="273 An Dương Vương"
+                            oninput="checkDiaChi(this)">
+                        <span class="error-input">Địa chỉ không hợp lệ</span>
+                    </div>
+                    <div id="diachi-selection-2">
+                        <div class="dropdown">
+                            <div class="select" id="city-dropdown-2">
+                                <div>
+                                    <div>Tỉnh / thành</div>
+                                    <div class="selected" id="city-selected-2" style="color: #6c6c6c;">Chọn tỉnh / thành
+                                    </div>
+                                </div>
+                                <div class="btn">
+                                    <i class="fa-solid fa-chevron-down caret"></i>
+                                </div>
+                            </div>
+                            <ul class="menu" id="city-menu-2">
+                                <li data-city="TPHCM">TP.HCM</li>
+                                <li data-city="HN">Hà Nội</li>
+                                <!-- <li data-city="">Đà Nẵng</li> -->
+                                <li>Hihi</li>
+                            </ul>
+                        </div>
+                        <div class="dropdown">
+                            <div class="select" id="district-dropdown-2">
+                                <div>
+                                    <div>Quận / huyện</div>
+                                    <div class="selected" id="district-selected-2" style="color: #6c6c6c;">Chọn quận /
+                                        huyện
+                                    </div>
+                                </div>
+                                <div class="btn">
+                                    <i class="fa-solid fa-chevron-down caret"></i>
+                                </div>
+                            </div>
+                            <ul class="menu" id="district-menu-2">
+                            </ul>
+                        </div>
+                        <div class="dropdown">
+                            <div class="select" id="ward-dropdown-2">
+                                <div>
+                                    <div>Phường / xã</div>
+                                    <div class="selected" id="ward-selected-2" style="color: #6c6c6c;">Chọn phường / xã
+                                    </div>
+                                </div>
+                                <div class="btn">
+                                    <i class="fa-solid fa-chevron-down caret"></i>
+                                </div>
+                            </div>
+                            <ul class="menu" id="ward-menu-2">
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="diachinhap-btn"
+                        style="text-align: center; padding: 12px; width: 100%; color: white; background-color: #0d5146; margin: 16px auto; cursor: pointer;">
+                        CHỌN</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="hoadon">
+        <div id="hoadon-container">
+            <div id="hoadon-header"
+                style="position: relative; background-color: #0d5146; height: 50px; z-index: inherit; border-bottom: 2px black solid;">
+                <p style="text-align: center; padding: 10px; color: white; line-height: 30px;">XÁC NHẬN ĐƠN HÀNG</p>
+                <div style="position: absolute; top: 18px; right: 20px; color: white; cursor: pointer;"
+                    onclick="DongXacNhanDonHang()">
+                    <i class="fa-solid fa-xmark"></i>
+                </div>
+            </div>
+            <div id="hoadon-center">
+                <div id="hoadon-left">
+                    <div id="hoadon-product">
+                        <table style="border-spacing: 0;">
+                            <tbody id="hoadon-container-2">
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div id="hoadon-right">
+                    <div id="hoadon-info">
+                        <div class="input-hihi">
+                            <p>Họ và tên: </p> <!--Ten -->
+                            <p class="ten" style="text-align: right;"></p>
+                        </div>
+                        <div class="input-hihi">
+                            <p>Địa chỉ: </p>
+                            <p class="diachi" style="text-align: right;"></p> <!--Dia chi -->
+                        </div>
+                        <div class="input-hihi">
+                            <p>SĐT: </p>
+                            <p class="sdt" style="text-align: right;"></p> <!--SDT -->
+                        </div>
+                        <div class="input-hihi">
+                            <p>Tạm tính: </p>
+                            <p class="tamtinh" style="text-align: right;"></p> <!--Tam tinh -->
+                        </div>
+                        <div class="input-hihi">
+                            <p>Tiền ship: </p>
+                            <p class="tienship" style="text-align: right;"></p> <!--Tien ship -->
+                        </div>
+                        <div class="input-hihi">
+                            <p>Tổng: </p>
+                            <p class="tong" style="text-align: right; background-color: pink;"></p> <!--Tong -->
+                        </div>
+                        <div class="input-hihi">
+                            <p>Phương thức thanh toán:</p>
+                            <p class="method" style="text-align: right;"></p> <!--Phương thức thanh toán -->
+
+                        </div>
+                    </div>
+                    <div id="xacnhandonhang-btn">XÁC NHẬN</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="information">
+        <h2>Nhận thông tin khuyến mãi mới nhất</h2>
+        <p>Để lại email của bạn để nhận những thông tin khuyến mãi mới nhất từ chúng tôi</p>
+        <div id="input-information">
+            <input type="email" name="email-info" id="email-info" placeholder="Email của bạn">
+            <button onclick="checkEmailkhuyenmai()" id="emailkhuyenmai">
+                <i class="fa-solid fa-arrow-right" style="color: white;"></i>
+            </button>
+        </div>
+    </div>
+    <div id="footer">
+        <div id="footer-container">
+            <div class="footer-item">
+                <img src="Logo-DH-Sai-Gon-SGU-flat.webp" alt="">
+            </div>
+            <div class="footer-item">
+                <h4>Thông tin hữu ích</h4>
+                <a href="">Kiểm tra size quạt</a>
+                <br>
+                <a href="">Hướng dẫn bảo hành</a>
+                <br>
+                <a href="">Quy định đổi quạt</a>
+            </div>
+            <div class="footer-item">
+                <h4>Giới thiệu</h4>
+                <a href="">Quan niệm về quạt</a>
+                <br>
+                <a href="">Danh sách cửa hàng</a>
+                <br>
+                <a href="">Dành cho đại lý</a>
+            </div>
+            <div class="footer-item">
+                <h4>Thông tin liên hệ</h4>
+                <p>Địa chỉ: 273 An Dương Vương, P3, Quận 5, TP.HCM</p>
+                <p>Số điện thoại: 0912345JQK</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="./js/cart.js"></script>
+    <script src="./js/login.js"></script>
+</body>
+
+</html>
